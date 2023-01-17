@@ -21,7 +21,7 @@ module "blog_vpc" {
   cidr = "10.0.0.0/16"
 
   azs             = ["us-west-2a","us-west-2b","us-west-2c"]
-  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]  
 
   enable_nat_gateway = true
 
@@ -49,7 +49,7 @@ module "blog_sg" {
   version = "4.17.1"
   name    = "blog_new"
 
-  vpc_id = module.blog_vpc.public_subnets[0]
+  vpc_id = module.blog_vpc.id
 
   ingress_rules       = ["http-80-tcp","https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
